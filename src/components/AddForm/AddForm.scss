@@ -1,0 +1,42 @@
+@import "../funcs.scss";
+
+.form__wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  height: 100%;
+}
+
+input,
+textarea {
+  width: 100%;
+  padding: 0.5rem;
+  margin-top: 1rem;
+  border-radius: 5px;
+  border: 1px solid var(--main-accent-color);
+  background: var(--main-bg-color) !important;
+  transition: all ease-in 0.2s;
+}
+
+textarea {
+  min-height: 10rem;
+}
+
+.error {
+  color: var(--error-color);
+}
+
+input[type="submit"] {
+  margin-top: 5rem;
+
+  &:active {
+    background-color: var(--main-accent-color) !important;
+    color: var(--main-bg-color);
+  }
+  @include hover-supported() {
+    &:hover {
+      background-color: var(--main-accent-color) !important;
+      color: var(--main-bg-color);
+    }
+  }
+}
