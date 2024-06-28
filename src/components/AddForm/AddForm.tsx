@@ -1,5 +1,5 @@
 import { useForm } from "react-hook-form";
-import { useAppDispatch, useAppSelector } from "../hooks";
+import { useAppDispatch } from "../hooks";
 import { addToDo } from "../../store/slices/toDoSlice";
 import "./AddForm.scss";
 import type { ToDoType } from "../../store/slices/toDoSlice";
@@ -21,12 +21,10 @@ const AddForm: React.FC<AddFormProps> = ({setAddisOpen}) => {
     formState: { errors },
   } = useForm<MyFormValues>();
 
-  const toDoArray = useAppSelector((state) => state.toDo.toDoArray);
-
   const dispatch = useAppDispatch();
 
   const onSubmit = (data: {title: string, text: string}) => {
-    const newToDo: ToDoType = {title: data.title, text: data.text, status: "active", id: toDoArray.length}
+    const newToDo: ToDoType = {title: data.title, text: data.text, status: "active", id: Date.now()}
     dispatch(addToDo(newToDo))
     setAddisOpen(false)
   };
