@@ -230,6 +230,7 @@ li {
   @include screen(tablet) {
     max-width: 660px;
     padding: 1rem;
+    padding-bottom: 5rem;
   }
 
   @include screen(mobile) {

@@ -54,12 +54,12 @@ export const toDoSlice = createSlice({
 
     changeStatus: (
       state,
-      action: PayloadAction<{ id: ToDoType["id"]; status: ToDoType["status"] }>
+      action: PayloadAction<{ id: ToDoType["id"]; newStatus: ToDoType["status"] }>
     ) => {
-      const { id, status } = action.payload;
+      const { id, newStatus } = action.payload;
       const toDo = state.toDoArray.find((item) => item.id === id);
       if (toDo) {
-        toDo.status = status;
+        toDo.status = newStatus;
       }
     },
   },

@@ -1,3 +1,4 @@
+import { useCallback } from "react";
 import "./AddButton.scss"
 
 type AddButtonProps = {
@@ -5,10 +6,11 @@ type AddButtonProps = {
 };
 
 const AddButton: React.FC<AddButtonProps> = ({setAddisOpen}) => {
+  const onClick = useCallback(() => setAddisOpen(true), [setAddisOpen])
 
   return (
     <div className="add-button__wrapper">
-      <button onClick={() => setAddisOpen(true)} className="add-button">
+      <button onClick={onClick} className="add-button">
       </button>
     </div>
   );

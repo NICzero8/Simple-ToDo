@@ -3,6 +3,7 @@ import { useAppDispatch } from "../hooks";
 import { addToDo } from "../../store/slices/toDoSlice";
 import "./AddForm.scss";
 import type { ToDoType } from "../../store/slices/toDoSlice";
+import { useCallback } from "react";
 
 type AddFormProps = {
   setAddisOpen: React.Dispatch<React.SetStateAction<boolean>>,
@@ -23,11 +24,11 @@ const AddForm: React.FC<AddFormProps> = ({setAddisOpen}) => {
 
   const dispatch = useAppDispatch();
 
-  const onSubmit = (data: {title: string, text: string}) => {
+  const onSubmit = useCallback((data: {title: string, text: string}) => {
     const newToDo: ToDoType = {title: data.title, text: data.text, status: "active", id: Date.now()}
     dispatch(addToDo(newToDo))
     setAddisOpen(false)
-  };
+  }, [setAddisOpen]);
 
   return (
     <div className="form__wrapper">
